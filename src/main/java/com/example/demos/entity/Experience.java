@@ -16,9 +16,6 @@ public class Experience {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(targetEntity = Organisation.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "organisation_id",referencedColumnName = "id")
-    private Organisation organisation;
 
 
     @Column(name="exp_summary",nullable = false,length = 1000)
@@ -30,8 +27,16 @@ public class Experience {
     @Column(name="end_date")
     private String end_date;
 
-    @OneToMany(targetEntity = Position.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "experience_id",referencedColumnName = "id")
-    private Set<Position> position;
+
+    @Column(name="position",nullable = false)
+    private String position;
+
+    @Column(name="organisation_name",nullable = false)
+    private String organisation_name;
+
+    @Column(name="organisation_location",nullable = false)
+    private String organisation_location;
+
+
 
 }

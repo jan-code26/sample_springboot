@@ -2,6 +2,7 @@ package com.example.demos.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.beans.MutablePropertyValues;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -49,7 +50,11 @@ public class User {
         @JoinColumn(name = "user_id",referencedColumnName = "id")
         private Set<UserSkill> skill;
 
-    public Collection<Education> getEducations() {
+    public Set<Education> getEducations() {
         return education;
+    }
+
+    public Set<Experience> getExperiences() {
+        return experience;
     }
 }

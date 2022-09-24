@@ -2,7 +2,9 @@ package com.example.demos.service;
 
 
 import com.example.demos.entity.Experience;
+import com.example.demos.entity.User;
 import com.example.demos.repository.ExperienceRepository;
+import com.example.demos.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,15 @@ public class ExperienceService {
 
     @Autowired
     private ExperienceRepository experienceRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-    public Experience saveExperience(Experience experience) {
-        return experienceRepository.save(experience);
+    public Experience saveExperience(Experience experience, int id){
+        Experience storedExperience=experienceRepository.save(experience);
+        User user = userRepository.findById(id).orElse(null);
+        user.getExperiences().add(storedExperience);
+        userRepository.save(user);
+        return storedExperience;
     }
 
     public Experience getExperience(int id) {
@@ -25,4 +33,7 @@ public class ExperienceService {
         return experienceRepository.findAll();
     }
 
+    public void deleteExperience(int id) {
+        experienceRepository.deleteById(id);
+    }
 }

@@ -2,6 +2,7 @@ package com.example.demos.controller;
 
 
 import com.example.demos.entity.Education;
+import com.example.demos.entity.User;
 import com.example.demos.service.EducationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +15,7 @@ public class EducationController {
     private EducationService educationService;
 
     @PostMapping("/add/{id}")
-    public ResponseEntity<?> saveEducation(@RequestBody Education education, @PathVariable("id") int id){
+    public ResponseEntity<User> saveEducation(@RequestBody Education education, @PathVariable("id") int id){
         return ResponseEntity.ok(educationService.saveEducation(education, id));
     }
     @DeleteMapping("/delete/{id}")

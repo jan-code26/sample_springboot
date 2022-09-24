@@ -16,10 +16,6 @@ public class UserSkill {
     @Column(name = "id")
     private Integer id;
 
-    @OneToOne(targetEntity = Skill_type.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "skill_id")
-    private Skill_type skill_type;
-
     @Column(name = "skill_summary", length = 1000)
     private String skill_summary;
 }

@@ -24,7 +24,7 @@ public class AddressController {
     }
 
     @GetMapping("/{id}")
-    public Address getAddress(@RequestBody int id){
+    public Address getAddress(@PathVariable("id") int id){
         return addressService.getAddress(id);
     }
 
@@ -35,6 +35,7 @@ public class AddressController {
 
     @PutMapping("/put/{id}")
     public ResponseEntity<Address> updateAddress(@PathVariable("id") int id, @RequestBody Address address){
+        address= addressService.updateAddress(id, address);
         return ResponseEntity.ok(addressService.updateAddress(id, address));
     }
 

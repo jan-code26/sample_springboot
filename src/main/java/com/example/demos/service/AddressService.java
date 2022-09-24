@@ -44,7 +44,11 @@ public class AddressService {
     public Address updateAddress(int id, Address address){
         Address addressFromDb = addressRepository.findById(id).orElse(null);
         if(addressFromDb != null){
-            addressFromDb = address;
+            addressFromDb.setCountry(address.getCountry());
+            addressFromDb.setState(address.getState());
+            addressFromDb.setCity(address.getCity());
+            addressFromDb.setStreet(address.getStreet());
+            addressFromDb.setZip(address.getZip());
             return addressRepository.save(addressFromDb);
         }
         return null;
