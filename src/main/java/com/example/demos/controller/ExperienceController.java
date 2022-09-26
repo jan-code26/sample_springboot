@@ -23,8 +23,8 @@ public class ExperienceController {
         return ResponseEntity.ok(experienceService.saveExperience(experience, id));
     }
 
-    @GetMapping("/experience")
-    public Experience getExperience(@RequestBody int id){
+    @GetMapping("/get/{id}")
+    public Experience getExperience(@PathVariable("id") int id){
         return experienceService.getExperience(id);
     }
 

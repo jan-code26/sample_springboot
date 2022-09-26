@@ -41,4 +41,17 @@ public class EducationService {
     public void deleteEducation(int id) {
         educationRespository.deleteById(id);
     }
+
+    public Education updateEducation(Education education, int id) {
+        Education storedEducation=educationRespository.findById(id).get();
+        storedEducation.setDegree_name(education.getDegree_name());
+        storedEducation.setInstitution_name(education.getInstitution_name());
+        storedEducation.setSummary(education.getSummary());
+        storedEducation.setStart_date(education.getStart_date());
+        storedEducation.setEnd_date(education.getEnd_date());
+        storedEducation.setInstitution_location(education.getInstitution_location());
+        educationRespository.save(storedEducation);
+
+        return storedEducation;
+     }
 }

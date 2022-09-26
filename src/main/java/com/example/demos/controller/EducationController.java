@@ -23,8 +23,8 @@ public class EducationController {
         educationService.deleteEducation(id);
     }
 
-    @GetMapping("/education")
-    public Education getEducation(@RequestBody int id){
+    @GetMapping("/get/{id}")
+    public Education getEducation(@PathVariable("id") int id){
         return educationService.getEducation(id);
     }
 
@@ -32,5 +32,11 @@ public class EducationController {
     public Iterable<Education> getEducations(){
         return educationService.getEducations();
     }
+
+    @PutMapping("/put/{id}")
+    public ResponseEntity<Education> updateEducation(@RequestBody Education education, @PathVariable("id") int id){
+        return ResponseEntity.ok(educationService.updateEducation(education, id));
+    }
+
 }
 

@@ -26,8 +26,8 @@ public class Education {
     @Column(name="end_date")
     private String end_date;
 
-    @Column(name="grade")
-    private String grade;
+    @Column(name="summary")
+    private String summary;
 
 
     @Column(name="institution_name",nullable = false)
