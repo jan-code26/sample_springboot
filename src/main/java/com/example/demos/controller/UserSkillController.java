@@ -2,22 +2,27 @@ package com.example.demos.controller;
 
 import com.example.demos.repository.UserRepository;
 import com.example.demos.repository.UserSkillRespository;
+import com.example.demos.service.UserSkillsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("skill")
 public class UserSkillController {
     @Autowired
-    private UserSkillRespository userSkillRespository;
+    private UserSkillsService userSkillsService;
 
     @GetMapping("/all")
     public ResponseEntity<?> getAllSkills(){
-        return ResponseEntity.ok(userSkillRespository.findAll());
+        return ResponseEntity.ok(userSkillsService.getAllSkills());
     }
+
+    @PostMapping("/add/{userid}/{skillid}")
+    public void addSkillToUser(@PathVariable("userid") int userid, @PathVariable("skillid") int skillid){
+        userSkillsService.addSkillToUser(userid, skillid);
+    }
+
 
 }
 

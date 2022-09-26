@@ -46,9 +46,6 @@ public class User {
     @JoinColumn(name = "user_id",referencedColumnName = "id")
     private Set<Experience> experience;
 
-    @OneToMany(targetEntity = UserSkill.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id",referencedColumnName = "id")
-    private Set<UserSkill> skill;
 
     public Set<Education> getEducations() {
         return education;
@@ -58,7 +55,4 @@ public class User {
         return experience;
     }
 
-    public Set<UserSkill> getSkills() {
-        return skill;
-    }
 }
